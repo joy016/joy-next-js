@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import Review from './review/Review';
+
 import { Box } from '@mui/material';
+import Quiz from './quiz/Quiz';
 
 export default function Home() {
   return (
@@ -11,9 +12,10 @@ export default function Home() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
+        backgroundColor: '#CFFAFE',
       }}
     >
-      <Review />
+      <Quiz />
     </Box>
   );
 }
