@@ -1,10 +1,6 @@
 import {
   Box,
   Container,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Typography,
 } from '@mui/material';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
