@@ -8,11 +8,10 @@ import { toast } from 'react-toastify';
 import ColorList from './components/ColorList';
 
 export default function Home() {
-  const [colors, setColors] = useState<Values[]>([]);
-
-  const handleAddColors = () => {
+  const [colors, setColors] = useState(new Values('#bc7af9').all(10));
+  const handleAddColors = (color: string) => {
     try {
-      const newColors = new Values('#f15025').all(10);
+      const newColors = new Values(color).all(10);
       setColors(newColors);
     } catch (error) {}
     toast.error('Something went wrong');

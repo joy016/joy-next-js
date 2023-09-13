@@ -1,23 +1,23 @@
 'use client';
 
-import { Box, Button, TextField, Typography } from '@mui/material';
-import { MuiColorInput } from 'mui-color-input';
-import { FormEvent, useState } from 'react';
+import { Box, Button, Typography } from '@mui/material';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 interface FormPageProps {
-  handleAddColors: () => void;
+  handleAddColors: (color: string) => void;
 }
 
 export default function FormPage({ handleAddColors }: FormPageProps) {
   const [color, setColor] = useState('#BC7AF9');
 
-  const handleChange = (newColor: string) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newColor = e.target.value;
     setColor(newColor);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleAddColors();
+    handleAddColors(color);
   };
 
   return (
@@ -31,12 +31,26 @@ export default function FormPage({ handleAddColors }: FormPageProps) {
       onSubmit={handleSubmit}
     >
       <Typography variant="button">Color Generator</Typography>
-      <MuiColorInput value={color} onChange={handleChange} />
+
+      <input
+        type="color"
+        value={color}
+        onChange={handleChange}
+        style={{
+          border: 'none',
+          backgroundColor: `${color}`,
+          borderRadius: '5px',
+          padding: '0.5rem 1rem',
+          outline: 'none',
+        }}
+      />
+      <input placeholder={color} style={{ padding: '0.3rem 1rem' }} />
+
       <Button
         size="large"
         variant="outlined"
         sx={{
-          padding: '15px 20px',
+          padding: '0.1rem 1rem',
           color: `${color}`,
           fontWeight: 'bold',
           borderColor: `${color}`,
